@@ -30,20 +30,20 @@ public:
         if (root == nullptr)
             return ans;
         stack<TreeNode*> nodes;
-        TreeNode *cur = nullptr, *pre = nullptr;
+        TreeNode *parent = nullptr, *child = nullptr;
         nodes.push(root);
         while (!nodes.empty()) {
-            cur = nodes.top();
-            if ((cur->left == nullptr && cur->right == nullptr) || (pre != nullptr && (pre == cur->left || pre == cur->right))) {
-                ans.push_back(cur->val);
+            parent = nodes.top();
+            if ((parent->left == nullptr && parent->right == nullptr) || (child != nullptr && (child == parent->left || child == parent->right))) {
+                ans.push_back(parent->val);
                 nodes.pop();
-                pre = cur;
+                child = parent;
             }
             else {
-                if (cur->right != nullptr)
-                    nodes.push(cur->right);
-                if (cur->left != nullptr)
-                    nodes.push(cur->left);
+                if (parent->right != nullptr)
+                    nodes.push(parent->right);
+                if (parent->left != nullptr)
+                    nodes.push(parent->left);
             }
         }
         return ans;

@@ -5,10 +5,9 @@ public:
         do {
             if (digits[i] == 9) {
                 digits[i--] = 0;
-                continue;
             }
             else {
-                digits[i] += 1;
+                ++digits[i];
                 break;
             }
         } while (i >= 0);

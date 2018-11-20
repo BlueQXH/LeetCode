@@ -25,8 +25,8 @@ public:
         if(head == nullptr || head->next == nullptr)
             return head;
         ListNode *tail = head->next, *tmp;
-        head->next = nullptr;
-        while (tail != NULL) {
+        head->next = nullptr; //这一行代码非常重要，不将head->next置为空会形成环路
+        while (tail != nullptr) {
             tmp = tail->next;
             tail->next = head;
             head = tail;

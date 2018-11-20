@@ -35,3 +35,46 @@ private:
  * int param_3 = obj.top();
  * int param_4 = obj.getMin();
  */
+
+struct element
+{
+    element(int v) : val(v) {};
+    int val = 0;
+    int min = 0;
+};
+
+class MinStack
+{
+public:
+    /** initialize your data structure here. */
+    MinStack() {
+        
+    }
+    
+    void push(int x) {
+        element e(x);
+        if (st.empty())
+        {
+            e.min = x;
+        }
+        else
+        {
+            e.min = x < st.top().min ? x : st.top().min;
+        }
+        st.push(move(e));
+    }
+    
+    void pop() {
+        st.pop();
+    }
+    
+    int top() {
+        return st.top().val;
+    }
+    
+    int getMin() {
+        return st.top().min;
+    }
+private:
+    stack<element> st;
+};

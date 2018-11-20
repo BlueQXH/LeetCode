@@ -18,7 +18,7 @@ public:
         vector<int>::iterator i = end;
         if (beg == --i)
             return false;
-        while (true) {
+        for(;;) {
             vector<int>::iterator j = i, k;
             if (*--i < *j) {
                 k = end;

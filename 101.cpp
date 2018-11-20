@@ -22,12 +22,11 @@ public:
     bool isSymmetric(TreeNode* root) {
         if (root == nullptr)
             return true;
-        else
-            return isOK(root->left, root->right);
+        return isOK(root->left, root->right);
     }
 };
 
 /*
 其他解法：1.翻转其中一颗二叉树，若翻转后的二叉树与另一颗完全相同，则两棵树是镜像对称的
-		  2.同时遍历两棵树，一颗采用前序遍历，另一颗采用后序遍历，若遍历结果是相同的，则两棵树是镜像对称的
+		  2.同时遍历两棵树，一棵采用前序遍历，另一棵采用后序遍历，若遍历结果是相同的，则两棵树是镜像对称的
 */

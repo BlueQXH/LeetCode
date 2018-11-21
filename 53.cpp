@@ -48,7 +48,10 @@ public:
         for (size_t j = mid + 1; j <= last; ++j)
 		{
             sum += nums[j];
-            right_sum = max(right_sum, sum);
+			if (right_sum < sum)
+			{
+				right_sum = sum;
+			}
         }
         return max(max(lmax, rmax), left_sum + right_sum);
     }

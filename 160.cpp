@@ -1,6 +1,8 @@
-class Solution1 {
+class Solution1
+{
 public:
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
+	{
         if (headA == nullptr || headB == nullptr)
             return nullptr;
         ListNode* tmpA = headA;
@@ -19,9 +21,11 @@ public:
     }
 };
 
-class Solution2 {
+class Solution2
+{
 public:
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
+	{
         if (headA == nullptr || headB == nullptr)
             return nullptr;
         if (headA == headB)
@@ -63,5 +67,53 @@ public:
             tmpB = tmpB->next;
         }
         return tmpA;
+    }
+};
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode
+ * {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution3
+{
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
+    {
+        stack<ListNode *> stack_A;
+        stack<ListNode *> stack_B;
+        
+        ListNode *pNode = headA;
+        while (pNode != nullptr)
+        {
+            stack_A.push(pNode);
+            pNode = pNode->next;
+        }
+        pNode = headB;
+        while (pNode != nullptr)
+        {
+            stack_B.push(pNode);
+            pNode = pNode->next;
+        }
+        
+        pNode = nullptr;
+        while (!stack_A.empty() && !stack_B.empty())
+        {
+            if (stack_A.top() == stack_B.top())
+            {
+                pNode = stack_A.top();
+                stack_A.pop();
+                stack_B.pop();
+            }
+            else
+            {
+                return pNode;
+            }
+        }
+        return pNode;
     }
 };

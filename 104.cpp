@@ -1,18 +1,24 @@
 /**
  * Definition for a binary tree node.
- * struct TreeNode {
+ * struct TreeNode
+ * {
  *     int val;
  *     TreeNode *left;
  *     TreeNode *right;
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution {
+class Solution
+{
 public:
-    int dfs (TreeNode* root, int depth) {
+    int dfs (TreeNode* root, int depth)
+	{
         if (root == nullptr)
+		{
             return depth;
-        else {
+		}
+        else
+		{
             ++depth;
             return max(dfs(root->left, depth), dfs(root->right, depth));
         }

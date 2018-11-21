@@ -1,6 +1,8 @@
-class Solution1 {
+class Solution1
+{
 public:
-    int missingNumber(vector<int>& nums) {
+    int missingNumber(vector<int> &nums)
+	{
         size_t result = 0;
         for (size_t i = 0; i <= nums.size(); ++i)
             result += i;
@@ -10,13 +12,18 @@ public:
     }
 };
 
-class Solution2 {
+class Solution2
+{
 public:
-    int missingNumber(vector<int>& nums) {
-        size_t result = nums.size();
-        for (size_t i = 0; i < nums.size(); ++i) {
+    int missingNumber(vector<int> &nums)
+	{
+        int result = nums.size();
+        for (int i = 0; i < nums.size(); ++i)
+		{
+			//利用异或运算的性质：x^y^y = x
 			result ^= i
             result ^= nums[i];
+		}
         return result;
     }
 };

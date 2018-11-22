@@ -3,16 +3,14 @@ class Solution
 public:
     int lengthOfLongestSubstring(string s)
     {
-        int curLength = 0;
-        int maxLength = 0;
+        int curLength = 0, maxLength = 0;
         
         array<int, 256> position;
         position.fill(-1);
         
         for (int i = 0; i < s.size(); ++i)
         {
-            int prevIndex = position[s[i]];
-            int d = i - prevIndex;
+            int d = i - position[s[i]];
             if (prevIndex < 0 || curLength < d)
             {
                 ++curLength;

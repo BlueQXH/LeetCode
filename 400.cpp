@@ -3,7 +3,7 @@ class Solution
 public:
     long getIndex(long n, long digits)
     {
-        int number = n/digits + (digits == 1 ? 0 : static_cast<int>(pow(10, digits-1)));
+        int number = n/digits + (digits == 1 ? 0 : static_cast<long>(pow(10, digits-1)));
         for (int i = 1; i < digits - n%digits; ++i)
         {
             number /= 10;

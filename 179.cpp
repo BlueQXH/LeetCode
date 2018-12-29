@@ -6,9 +6,9 @@ public:
         vector<string> vec;
         for (const int &i : nums)
         {
-            vec.push_back(to_string(i));
+            vec.push_back(move(to_string(i)));
         }
-        sort(vec.begin(), vec.end(), Comp());
+        sort(vec.begin(), vec.end(), [](const string& a, const string& b) {return a+b > b+a;});
         string ans;
         for (const string &s : vec)
         {
@@ -20,12 +20,4 @@ public:
         }
         return ans;
     }
-private:
-    struct Comp
-    {
-        bool operator()(const string &a, const string &b)
-        {
-            return a+b > b+a;
-        }
-    };
 };
